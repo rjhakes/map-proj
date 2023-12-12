@@ -32,16 +32,19 @@ export class APIService {
 
   constructor(private http: HttpClient) { }
 
-  GetAllCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.url}?format=json`, this.httpOptions);
-  }
-
-  // GetCountry(id: string): Observable<any> {
-  //   console.log(`${this.url}${id}/?format=json`)
-  //   return this.http.get<any>(`${this.url}${id}/?format=json`);
+  // GetAllCountries(): Observable<Country[]> {
+  //   return this.http.get<Country[]>(`${this.url}?format=json`, this.httpOptions);
   // }
 
   GetCountry(id: string) {
     return this.http.get(`${this.url}${id}/?format=json`);
+  }
+
+  GetTotalPop(id: string) {
+    return this.http.get(`${this.url}${id}/indicator/SP.POP.TOTL?date=2022&format=json`);
+  }
+
+  GetGDP(id: string) {
+    return this.http.get(`${this.url}${id}/indicator/NY.GDP.MKTP.CD?date=2022&format=json`);
   }
 }

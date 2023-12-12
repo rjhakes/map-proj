@@ -1,9 +1,11 @@
 <mat-card class="country-details-card" 
             style="margin: 20px 20px; width: 70%; height: 100%; background-color: rgb(167, 51, 251)">
     <mat-card-header>
-        <mat-card-title>{{country.name}}</mat-card-title>
-        <mat-card-subtitle>{{country.capitalCity}}</mat-card-subtitle>
+        <mat-card-title>Country: {{country.name}}</mat-card-title>
+        <mat-card-subtitle>Capital: {{country.capitalCity}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content><p>{{country.region.value}}</p></mat-card-content>
-    <mat-card-content><p>{{country.incomeLevel.value}}</p></mat-card-content>
+    <mat-card-content><p>Region: {{country.region.value}}</p></mat-card-content>
+    <mat-card-content><p>Income Level: {{country.incomeLevel.value}}</p></mat-card-content>
+    <mat-card-content><p>Population: {{country.totalPop}}</p></mat-card-content>
+    <mat-card-content><p>GDP: {{country.gdp}}</p></mat-card-content>
 </mat-card>

@@ -54,7 +54,6 @@ export class CountryDetailsComponent implements OnChanges{
         if (changes['id'].currentValue.length == 2) {
           this.apiService.GetCountry(changes['id'].currentValue)
           .subscribe((response: any) => {
-            console.log(response);
             this.country.name = response[1][0].name;
             this.country.capitalCity = response[1][0].capitalCity;
             this.country.region.value = response[1][0].region.value;
@@ -63,6 +62,14 @@ export class CountryDetailsComponent implements OnChanges{
             this.country.iso2Code = response[1][0].iso2Code;
             this.country.longitude = response[1][0].longitude;
             this.country.latitude = response[1][0].latitude;
+          });
+          this.apiService.GetTotalPop(changes['id'].currentValue)
+          .subscribe((response: any) => {
+            this.country.totalPop = response[1][0].value;
+          });
+          this.apiService.GetGDP(changes['id'].currentValue)
+          .subscribe((response: any) => {
+            this.country.gdp = response[1][0].value;
           });
         }
       }
