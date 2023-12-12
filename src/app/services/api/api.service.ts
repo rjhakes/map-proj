@@ -10,29 +10,20 @@ import { Country } from 'src/app/models/Country';
 export class APIService {
 
   httpOptions = {
-    // headers: new HttpHeaders(
-    //   {
-    //     'Content-Type':'application/json'
-    //   }
-    // )
+    headers: new HttpHeaders(
+      {
+        'Content-Type':'application/json'
+      }
+    )
   }
 
-  headers = new HttpHeaders()
-    .set('Access-Control-Allow-Origin', '*')
-    .set("Access-Control-Expose-Headers","Content-Encoding, Authorization")
-    .set("Access-Control-Max-Age","700")
-    .set('Content-Type','application/json')
-    .set('Access-Control-Request-Method', 'OPTIONS,GET,PUT,POST,DELETE')
-    .set('Access-Control-Allow-Headers','X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding, X-Auth-Token, content-type')
-    .set("Access-Control-Request-Headers","Content-Type")
-    .set("Access-Control-Allow-Credentials","true")
-  requestOptions = {  headers: this.headers};  
+   
 
   url : string = environment.WORLDBANK_URL;
 
   constructor(private http: HttpClient) { }
 
-  // GetAllCountries(): Observable<Country[]> {
+  // GetAllCountries(): {
   //   return this.http.get<Country[]>(`${this.url}?format=json`, this.httpOptions);
   // }
 
