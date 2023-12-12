@@ -15,13 +15,6 @@ export class CountryDetailsComponent implements OnChanges{
   constructor(private apiService: APIService) {
     this.country =
     {
-      pageData: {
-        page: 1,
-        pages: 1,
-        per_page: "50",
-        total: 1
-      },
-      countryData: {
         id: '',
         iso2Code: '',
         name: '',
@@ -47,25 +40,30 @@ export class CountryDetailsComponent implements OnChanges{
         },
         capitalCity: '',
         longitude: 0,
-        latitude: 0
-      }
-      
-      
+        latitude: 0,
+        datePop: '',
+        totalPop: '',
+        dateGDP: '',
+        gdp: ''
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-        var result: any;      
-        
-        console.log(changes['id'].currentValue);
-        console.log(changes['id'].currentValue.length == 2);
+        // console.log(changes['id'].currentValue);
+        // console.log(changes['id'].currentValue.length == 2);
         if (changes['id'].currentValue.length == 2) {
-          console.log("sending query");
-          this.apiService.GetCountry(changes['id'].currentValue).subscribe(
-            country => {result = country;}
-          )
-          console.log("result: ");
-          console.log(result);
+          this.apiService.GetCountry(changes['id'].currentValue)
+          .subscribe((response: any) => {
+            console.log(response);
+            this.country.name = response[1][0].name;
+            this.country.capitalCity = response[1][0].capitalCity;
+            this.country.region.value = response[1][0].region.value;
+            this.country.incomeLevel.value = response[1][0].incomeLevel.value;
+            this.country.id = response[1][0].id;
+            this.country.iso2Code = response[1][0].iso2Code;
+            this.country.longitude = response[1][0].longitude;
+            this.country.latitude = response[1][0].latitude;
+          });
         }
       }
   }
