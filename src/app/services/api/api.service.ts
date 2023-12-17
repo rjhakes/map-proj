@@ -23,9 +23,9 @@ export class APIService {
 
   constructor(private http: HttpClient) { }
 
-  // GetAllCountries(): {
-  //   return this.http.get<Country[]>(`${this.url}?format=json`, this.httpOptions);
-  // }
+  GetAllCountries() {
+    return this.http.get(`${this.url}?per_page=300&format=json`);
+  }
 
   GetCountry(id: string) {
     return this.http.get(`${this.url}${id}/?format=json`);

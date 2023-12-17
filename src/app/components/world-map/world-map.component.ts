@@ -8,10 +8,11 @@ import { Component, Output, EventEmitter, HostListener } from '@angular/core';
 
 export class WorldMapComponent {
   
-  @Output() grabCountryID = new EventEmitter<string>();
+  @Output() getCountryID = new EventEmitter<string>();
 
-  getCountryID(id: string) {
-    this.grabCountryID.emit(id);
+  getID(id: string) {
+    console.log(id);
+    this.getCountryID.emit(id);
   }
 
 }
